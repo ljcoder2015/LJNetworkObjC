@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'LJNetwork-OC' do
+pod 'AFNetworking', '~> 3.1.0'
+  target 'LJNetwork-OCTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'LJNetwork-OCUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
