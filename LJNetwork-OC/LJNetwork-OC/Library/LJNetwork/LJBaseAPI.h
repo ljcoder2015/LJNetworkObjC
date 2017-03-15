@@ -61,6 +61,6 @@
 
 - (NSInteger)loadData;
 
-- (void)uploadImage:(NSData *)imageData;
+- (NSInteger)uploadImage:(NSData *)imageData;
 
 @end

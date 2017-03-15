@@ -74,7 +74,7 @@
 }
 
 #pragma mark - uploadImage
-- (void)uploadImage:(NSData *)imageData {
+- (NSInteger)uploadImage:(NSData *)imageData {
     NSDictionary *params = [self.parametersDataSource requestParametersWithManager:self];
     NSString *path = [self.requestDelegate route];
     NSNumber *requestID = 0;
@@ -86,6 +86,8 @@
         }
     }];
     [self.requestList addObject:requestID];
+    
+    return [requestID integerValue];
 }
 
 #pragma mark - setter & getter
