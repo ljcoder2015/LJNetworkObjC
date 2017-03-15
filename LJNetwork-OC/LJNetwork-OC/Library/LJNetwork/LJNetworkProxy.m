@@ -67,15 +67,20 @@
         id requestBody = [[NSString alloc] initWithData:request.HTTPBody?:[NSData data] encoding:NSUTF8StringEncoding];
         
         if (error) {
-            failed(nil, error);
             NSLog(@"\n================LJNetwork response start================\nURL: %@\nstatus code: %@\nrequest method: %@\nrequest header:\n%@\n\nrequest body:\n%@\n\nerror:\n%@\n================LJNetwork response end================\n",request.URL, @(httpResponse.statusCode), request.HTTPMethod, request.allHTTPHeaderFields, requestBody, error.localizedDescription);
+            // 失败回调
+            if (failed) {
+                failed(nil, error);
+            }
             return ;
         }
-        
+        // 打印请求信息
         id responseObj = [NSJSONSerialization JSONObjectWithData:responseObject?:[NSData data] options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"\n================LJNetwork response start================\n---URL: %@\nstatus code: %@\nrequest method: %@\nreqeust header:\n%@\n\nrequest body:\n%@\n\nresponseObject:\n%@\n================LJNetwork response end================\n",request.URL, @(httpResponse.statusCode), request.HTTPMethod, request.allHTTPHeaderFields, requestBody, responseObj);
-    
-        sucess(responseObj, nil);
+        // 成功回调
+        if (sucess) {
+            sucess(responseObj, nil);
+        }
     }];
     [task resume];
     
@@ -86,6 +91,34 @@
 }
 
 #pragma mark - uplaodImage
+- (NSNumber *)uploadImage:(NSData *)imageData path:(NSString *)path params:(NSDictionary *)params success:(LJCallBack)sucess failed:(LJCallBack)failed {
+    NSNumber *requestID = nil;
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", kLJNetworkDomain, path] parameters:params error:nil];
+    requestID = [self uploadImage:imageData request:request uploadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        id requestBody = [[NSString alloc] initWithData:request.HTTPBody?:[NSData data] encoding:NSUTF8StringEncoding];
+        
+        if (error) {
+            // 打印请求信息
+            NSLog(@"\n================LJNetwork response start================\nURL: %@\nstatus code: %@\nrequest method: %@\nrequest header:\n%@\n\nrequest body:\n%@\n\nerror:\n%@\n================LJNetwork response end================\n",request.URL, @(httpResponse.statusCode), request.HTTPMethod, request.allHTTPHeaderFields, requestBody, error.localizedDescription);
+            // 失败回调
+            if (failed) {
+                failed(nil, error);
+            }
+            return ;
+        }
+        // 打印请求信息
+        id responseObj = [NSJSONSerialization JSONObjectWithData:responseObject?:[NSData data] options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"\n================LJNetwork response start================\n---URL: %@\nstatus code: %@\nrequest method: %@\nreqeust header:\n%@\n\nrequest body:\n%@\n\nresponseObject:\n%@\n================LJNetwork response end================\n",request.URL, @(httpResponse.statusCode), request.HTTPMethod, request.allHTTPHeaderFields, requestBody, responseObj);
+        // 成功回调
+        if (sucess) {
+            sucess(responseObj, nil);
+        }
+        
+    }];
+    return requestID;
+}
+
 - (NSNumber *)uploadImage:(NSData *)imageData request:(NSMutableURLRequest *)request uploadProgress:(void(^)(NSProgress * _Nonnull uploadProgress))progress completionHandler:(void(^)(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error))completionHandler {
     NSURLSessionUploadTask *uploadTask = [self.sessionManager uploadTaskWithRequest:request fromData:imageData progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) {

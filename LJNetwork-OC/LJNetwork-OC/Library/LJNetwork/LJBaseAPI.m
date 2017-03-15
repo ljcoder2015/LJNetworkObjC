@@ -73,6 +73,21 @@
     return requestID;
 }
 
+#pragma mark - uploadImage
+- (void)uploadImage:(NSData *)imageData {
+    NSDictionary *params = [self.parametersDataSource requestParametersWithManager:self];
+    NSString *path = [self.requestDelegate route];
+    NSNumber *requestID = 0;
+    requestID = [[LJNetworkProxy sharedInstance] uploadImage:imageData path:path params:params success:^(id responseObject, NSError *error) {
+        [self.callBackDelegate manager:self requestCallBackSuccess:responseObject];
+    } failed:^(id responseObject, NSError *error) {
+        if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackFailed:)]) {
+            [self.callBackDelegate manager:self requestCallBackFailed:error];
+        }
+    }];
+    [self.requestList addObject:requestID];
+}
+
 #pragma mark - setter & getter
 - (NSMutableArray *)requestList {
     if (!_requestList) {
