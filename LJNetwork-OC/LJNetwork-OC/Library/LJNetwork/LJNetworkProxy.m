@@ -138,16 +138,19 @@
 }
 
 #pragma mark - cancel request
-- (void)cancelTaskWithTaskID:(NSInteger)taskID {
-    NSURLSessionTask *task = [self.dispathTable objectForKey:@(taskID)];
-    [task cancel];
+- (void)cancelTaskWithTaskID:(NSNumber *)taskID {
+    
+    if ([[self.dispathTable allKeys] containsObject:taskID]) {
+        NSURLSessionTask *task = [self.dispathTable objectForKey:taskID];
+        [task cancel];
+        [self.dispathTable removeObjectForKey:taskID];
+    }
+    
 }
 
 - (void)cancelTaskWithTaskList:(NSArray *)taskList {
     for (NSNumber *taskID in taskList) {
-        NSURLSessionTask *task = [self.dispathTable objectForKey:taskID];
-        [task cancel];
-        NSLog(@"task %@ is cancel", @([task taskIdentifier]));
+        [self cancelTaskWithTaskID:taskID];
     }
 }
 
