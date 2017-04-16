@@ -124,6 +124,7 @@
         
         NSString *method = [self.requestDelegate requestMethod];
         NSString *path = [self.requestDelegate route];
+        
         NSInteger requestID = 0;
         if ([method isEqualToString:@"GET"]) {
             requestID = [[LJNetworkProxy sharedInstance] callGETWithPath:path Params:parameters success:^(id responseObject, NSError *error) {
@@ -172,10 +173,13 @@
 }
 
 - (RACSignal *)rac_uploadImage:(NSData *)imageData name:(NSString *)name {
-    NSDictionary *params = [self.parametersDataSource requestParametersWithManager:self];
-    NSString *path = [self.requestDelegate route];
-    __block NSNumber *requestID = 0;
+    
     RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        
+        NSDictionary *params = [self.parametersDataSource requestParametersWithManager:self];
+        NSString *path = [self.requestDelegate route];
+        
+        NSNumber *requestID = 0;
         requestID = [[LJNetworkProxy sharedInstance] uploadImage:imageData path:path params:params name:name success:^(id responseObject, NSError *error) {
             // 成功回调代理
             if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackSuccess:)]) {
