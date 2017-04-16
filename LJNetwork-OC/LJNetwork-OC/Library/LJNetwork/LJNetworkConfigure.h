@@ -9,6 +9,7 @@
 #ifndef LJNetworkConfigure_h
 #define LJNetworkConfigure_h
 
-static NSString * const kLJNetworkDomain = @"https://api.lostg.com";// 测试服务器
+static NSString * const LJNetworkDomain = @"https://api.lostg.com";// 测试服务器
+static NSString * const LJImageDomain = @"https://api.lostg.com";// 图片服务器
 
 #endif /* LJNetworkConfigure_h */

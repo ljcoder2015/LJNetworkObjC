@@ -47,40 +47,42 @@
 
 #pragma mark - request
 - (NSInteger)callGETWithPath:(NSString *)path Params:(NSDictionary *)params success:(LJCallBack)sucess failed:(LJCallBack)failed {
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@", kLJNetworkDomain, path] parameters:params error:nil];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:[NSString stringWithFormat:@"%@%@", LJNetworkDomain, path] parameters:params error:nil];
     NSNumber *taskID = [self callRequest:request success:sucess failed:failed];
     return [taskID integerValue];
 }
 
 - (NSInteger)callPOSTWithPath:(NSString *)path Params:(NSDictionary *)params success:(LJCallBack)sucess failed:(LJCallBack)failed {
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", kLJNetworkDomain, path] parameters:params error:nil];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", LJNetworkDomain, path] parameters:params error:nil];
     NSNumber *taskID = [self callRequest:request success:sucess failed:failed];
     return [taskID integerValue];
 }
 
 - (NSNumber *)callRequest:(NSMutableURLRequest *)request success:(LJCallBack)sucess failed:(LJCallBack)failed {
-    
-    
+
     NSURLSessionDataTask *task = [self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id requestBody = [[NSString alloc] initWithData:request.HTTPBody?:[NSData data] encoding:NSUTF8StringEncoding];
         
         if (error) {
+            
             NSLog(@"\n================LJNetwork response start================\nURL: %@\nstatus code: %@\nrequest method: %@\nrequest header:\n%@\n\nrequest body:\n%@\n\nerror:\n%@\n================LJNetwork response end================\n",request.URL, @(httpResponse.statusCode), request.HTTPMethod, request.allHTTPHeaderFields, requestBody, error.localizedDescription);
-            // 失败回调
+            
             if (failed) {
                 failed(nil, error);
             }
+            
             return ;
         }
-        // 打印请求信息
+        
         id responseObj = [NSJSONSerialization JSONObjectWithData:responseObject?:[NSData data] options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"\n================LJNetwork response start================\n---URL: %@\nstatus code: %@\nrequest method: %@\nreqeust header:\n%@\n\nrequest body:\n%@\n\nresponseObject:\n%@\n================LJNetwork response end================\n",request.URL, @(httpResponse.statusCode), request.HTTPMethod, request.allHTTPHeaderFields, requestBody, responseObj);
-        // 成功回调
+    
         if (sucess) {
             sucess(responseObj, nil);
         }
+        
     }];
     [task resume];
     
@@ -91,9 +93,14 @@
 }
 
 #pragma mark - uplaodImage
-- (NSNumber *)uploadImage:(NSData *)imageData path:(NSString *)path params:(NSDictionary *)params success:(LJCallBack)sucess failed:(LJCallBack)failed {
+- (NSNumber *)uploadImage:(NSData *)imageData path:(NSString *)path params:(NSDictionary *)params name:(NSString *)name success:(LJCallBack)sucess failed:(LJCallBack)failed {
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", LJImageDomain, path] parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:imageData name:name fileName:@"image.jpg" mimeType:@"image/jpg"];
+    } error:nil];
+    
+    
     NSNumber *requestID = nil;
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@", kLJNetworkDomain, path] parameters:params error:nil];
     requestID = [self uploadImage:imageData request:request uploadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id requestBody = [[NSString alloc] initWithData:request.HTTPBody?:[NSData data] encoding:NSUTF8StringEncoding];
@@ -120,7 +127,7 @@
 }
 
 - (NSNumber *)uploadImage:(NSData *)imageData request:(NSMutableURLRequest *)request uploadProgress:(void(^)(NSProgress * _Nonnull uploadProgress))progress completionHandler:(void(^)(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error))completionHandler {
-    NSURLSessionUploadTask *uploadTask = [self.sessionManager uploadTaskWithRequest:request fromData:imageData progress:^(NSProgress * _Nonnull uploadProgress) {
+    NSURLSessionUploadTask *uploadTask = [self.sessionManager uploadTaskWithStreamedRequest:request progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) {
             progress(uploadProgress);
         }
@@ -137,9 +144,23 @@
     return requestID;
 }
 
+- (void)uploadImage:(NSData *)imageData urlString:(NSString *)urlString name:(NSString *)name params:(id)params callback:(void(^)(id response, NSError *error))complete {
+
+    [self.sessionManager POST:[LJImageDomain stringByAppendingString:urlString] parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:imageData name:name fileName:@"img.jpg" mimeType:@"image/jpg"];
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        id responseObj = [NSJSONSerialization JSONObjectWithData:responseObject?:[NSData data] options:NSJSONReadingMutableContainers error:nil];
+        complete(responseObj, nil);
+        NSLog(@"uploadImage respose: %@", responseObj);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        complete(nil, error);
+        NSLog(@"uploadImage error: %@", error);
+    }];
+}
+
 #pragma mark - cancel request
 - (void)cancelTaskWithTaskID:(NSNumber *)taskID {
-    
+
     if ([[self.dispathTable allKeys] containsObject:taskID]) {
         NSURLSessionTask *task = [self.dispathTable objectForKey:taskID];
         [task cancel];

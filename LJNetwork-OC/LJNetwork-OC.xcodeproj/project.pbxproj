@@ -15,12 +15,10 @@
 		4FFDF7431E76A5F300AADDDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FFDF7411E76A5F300AADDDA /* LaunchScreen.storyboard */; };
 		4FFDF74E1E76A5F300AADDDA /* LJNetwork_OCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDF74D1E76A5F300AADDDA /* LJNetwork_OCTests.m */; };
 		4FFDF7591E76A5F300AADDDA /* LJNetwork_OCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDF7581E76A5F300AADDDA /* LJNetwork_OCUITests.m */; };
-		4FFDF7761E76A66200AADDDA /* LJBaseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDF7721E76A66200AADDDA /* LJBaseAPI.m */; };
-		4FFDF7771E76A66200AADDDA /* LJNetworkProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDF7751E76A66200AADDDA /* LJNetworkProxy.m */; };
 		4FFDF77A1E76A67800AADDDA /* LJTestAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFDF7791E76A67800AADDDA /* LJTestAPI.m */; };
+		59CF9D211EA338A8002B506D /* LJBaseAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CF9D201EA338A8002B506D /* LJBaseAPI.m */; };
+		59CF9D281EA339B2002B506D /* LJNetworkProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CF9D271EA339B2002B506D /* LJNetworkProxy.m */; };
 		60BA2E7ED5941E2955C0BA36 /* libPods-LJNetwork-OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1832E9B6D2330E4C0BA5BF8 /* libPods-LJNetwork-OC.a */; };
-		BCA4F90D5E44E70B31F9EA7F /* libPods-LJNetwork-OCUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB5A6642F983BBF4898702F /* libPods-LJNetwork-OCUITests.a */; };
-		F219086BCAB505436272A0D8 /* libPods-LJNetwork-OCTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 017C4F3474A3F54A5FA91A4A /* libPods-LJNetwork-OCTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,21 +56,18 @@
 		4FFDF7541E76A5F300AADDDA /* LJNetwork-OCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LJNetwork-OCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FFDF7581E76A5F300AADDDA /* LJNetwork_OCUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJNetwork_OCUITests.m; sourceTree = "<group>"; };
 		4FFDF75A1E76A5F300AADDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4FFDF7711E76A66200AADDDA /* LJBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBaseAPI.h; sourceTree = "<group>"; };
-		4FFDF7721E76A66200AADDDA /* LJBaseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBaseAPI.m; sourceTree = "<group>"; };
 		4FFDF7731E76A66200AADDDA /* LJNetworkConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNetworkConfigure.h; sourceTree = "<group>"; };
-		4FFDF7741E76A66200AADDDA /* LJNetworkProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNetworkProxy.h; sourceTree = "<group>"; };
-		4FFDF7751E76A66200AADDDA /* LJNetworkProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNetworkProxy.m; sourceTree = "<group>"; };
 		4FFDF7781E76A67800AADDDA /* LJTestAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJTestAPI.h; sourceTree = "<group>"; };
 		4FFDF7791E76A67800AADDDA /* LJTestAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJTestAPI.m; sourceTree = "<group>"; };
 		5809542ABDBBA8E8280337C8 /* Pods-LJNetwork-OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJNetwork-OC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJNetwork-OC/Pods-LJNetwork-OC.debug.xcconfig"; sourceTree = "<group>"; };
+		59CF9D1F1EA338A8002B506D /* LJBaseAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJBaseAPI.h; sourceTree = "<group>"; };
+		59CF9D201EA338A8002B506D /* LJBaseAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJBaseAPI.m; sourceTree = "<group>"; };
+		59CF9D251EA3396F002B506D /* LJNetwork.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJNetwork.pch; sourceTree = "<group>"; };
+		59CF9D261EA339B2002B506D /* LJNetworkProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJNetworkProxy.h; sourceTree = "<group>"; };
+		59CF9D271EA339B2002B506D /* LJNetworkProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJNetworkProxy.m; sourceTree = "<group>"; };
 		7FB5A6642F983BBF4898702F /* libPods-LJNetwork-OCUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJNetwork-OCUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D36931065407A0DB7A3E65 /* Pods-LJNetwork-OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJNetwork-OC.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJNetwork-OC/Pods-LJNetwork-OC.release.xcconfig"; sourceTree = "<group>"; };
-		9572C0EB385DEBC697C57AB6 /* Pods-LJNetwork-OCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJNetwork-OCUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJNetwork-OCUITests/Pods-LJNetwork-OCUITests.release.xcconfig"; sourceTree = "<group>"; };
-		99DB61E81C751E20D1F3508C /* Pods-LJNetwork-OCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJNetwork-OCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJNetwork-OCTests/Pods-LJNetwork-OCTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A461340DAE09C6D777AE0BA2 /* Pods-LJNetwork-OCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJNetwork-OCTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJNetwork-OCTests/Pods-LJNetwork-OCTests.release.xcconfig"; sourceTree = "<group>"; };
 		C1832E9B6D2330E4C0BA5BF8 /* libPods-LJNetwork-OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJNetwork-OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEFA60248067DB0F16DDAD1E /* Pods-LJNetwork-OCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJNetwork-OCUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJNetwork-OCUITests/Pods-LJNetwork-OCUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F219086BCAB505436272A0D8 /* libPods-LJNetwork-OCTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +90,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA4F90D5E44E70B31F9EA7F /* libPods-LJNetwork-OCUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,13 +131,11 @@
 		4FFDF7321E76A5F300AADDDA /* LJNetwork-OC */ = {
 			isa = PBXGroup;
 			children = (
-				4FFDF76F1E76A65200AADDDA /* Library */,
+				4FFDF7701E76A66200AADDDA /* LJNetwork */,
 				4FFDF76E1E76A64B00AADDDA /* API */,
-				4FFDF7361E76A5F300AADDDA /* AppDelegate.h */,
-				4FFDF7371E76A5F300AADDDA /* AppDelegate.m */,
-				4FFDF7391E76A5F300AADDDA /* ViewController.h */,
-				4FFDF73A1E76A5F300AADDDA /* ViewController.m */,
-				4FFDF73C1E76A5F300AADDDA /* Main.storyboard */,
+				59CF9D241EA338DD002B506D /* ViewController */,
+				59CF9D221EA338C2002B506D /* Model */,
+				59CF9D231EA338CD002B506D /* ViewModel */,
 				4FFDF73F1E76A5F300AADDDA /* Assets.xcassets */,
 				4FFDF7411E76A5F300AADDDA /* LaunchScreen.storyboard */,
 				4FFDF7441E76A5F300AADDDA /* Info.plist */,
@@ -157,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				4FFDF7341E76A5F300AADDDA /* main.m */,
+				59CF9D251EA3396F002B506D /* LJNetwork.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -188,24 +180,17 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		4FFDF76F1E76A65200AADDDA /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				4FFDF7701E76A66200AADDDA /* LJNetwork */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		4FFDF7701E76A66200AADDDA /* LJNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				4FFDF7711E76A66200AADDDA /* LJBaseAPI.h */,
-				4FFDF7721E76A66200AADDDA /* LJBaseAPI.m */,
 				4FFDF7731E76A66200AADDDA /* LJNetworkConfigure.h */,
-				4FFDF7741E76A66200AADDDA /* LJNetworkProxy.h */,
-				4FFDF7751E76A66200AADDDA /* LJNetworkProxy.m */,
+				59CF9D1F1EA338A8002B506D /* LJBaseAPI.h */,
+				59CF9D201EA338A8002B506D /* LJBaseAPI.m */,
+				59CF9D261EA339B2002B506D /* LJNetworkProxy.h */,
+				59CF9D271EA339B2002B506D /* LJNetworkProxy.m */,
 			);
-			path = LJNetwork;
+			name = LJNetwork;
+			path = Library/LJNetwork;
 			sourceTree = "<group>";
 		};
 		593655E8DE989C41DF4C8052 /* Pods */ = {
@@ -213,12 +198,34 @@
 			children = (
 				5809542ABDBBA8E8280337C8 /* Pods-LJNetwork-OC.debug.xcconfig */,
 				80D36931065407A0DB7A3E65 /* Pods-LJNetwork-OC.release.xcconfig */,
-				99DB61E81C751E20D1F3508C /* Pods-LJNetwork-OCTests.debug.xcconfig */,
-				A461340DAE09C6D777AE0BA2 /* Pods-LJNetwork-OCTests.release.xcconfig */,
-				DEFA60248067DB0F16DDAD1E /* Pods-LJNetwork-OCUITests.debug.xcconfig */,
-				9572C0EB385DEBC697C57AB6 /* Pods-LJNetwork-OCUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		59CF9D221EA338C2002B506D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		59CF9D231EA338CD002B506D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		59CF9D241EA338DD002B506D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4FFDF7361E76A5F300AADDDA /* AppDelegate.h */,
+				4FFDF7371E76A5F300AADDDA /* AppDelegate.m */,
+				4FFDF7391E76A5F300AADDDA /* ViewController.h */,
+				4FFDF73A1E76A5F300AADDDA /* ViewController.m */,
+				4FFDF73C1E76A5F300AADDDA /* Main.storyboard */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,12 +255,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FFDF7601E76A5F300AADDDA /* Build configuration list for PBXNativeTarget "LJNetwork-OCTests" */;
 			buildPhases = (
-				A51D94A036EB02D2A0725BBA /* [CP] Check Pods Manifest.lock */,
 				4FFDF7451E76A5F300AADDDA /* Sources */,
 				4FFDF7461E76A5F300AADDDA /* Frameworks */,
 				4FFDF7471E76A5F300AADDDA /* Resources */,
-				51942179F0B1524DE392439A /* [CP] Embed Pods Frameworks */,
-				06BABA76EF1C52BBF8CD04B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,12 +273,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FFDF7631E76A5F300AADDDA /* Build configuration list for PBXNativeTarget "LJNetwork-OCUITests" */;
 			buildPhases = (
-				C35755148533E6DFC18A333C /* [CP] Check Pods Manifest.lock */,
 				4FFDF7501E76A5F300AADDDA /* Sources */,
 				4FFDF7511E76A5F300AADDDA /* Frameworks */,
 				4FFDF7521E76A5F300AADDDA /* Resources */,
-				1CC480B5EB8FF2C310D2DC42 /* [CP] Embed Pods Frameworks */,
-				882A2DF92C47CF06E5BB3E6D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -362,21 +363,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06BABA76EF1C52BBF8CD04B8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJNetwork-OCTests/Pods-LJNetwork-OCTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		14AEAB1CA3DAF67104CDA306 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,21 +376,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJNetwork-OC/Pods-LJNetwork-OC-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1CC480B5EB8FF2C310D2DC42 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJNetwork-OCUITests/Pods-LJNetwork-OCUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		291E959F37EB9A3432DCA6EA /* [CP] Check Pods Manifest.lock */ = {
@@ -422,36 +393,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		51942179F0B1524DE392439A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJNetwork-OCTests/Pods-LJNetwork-OCTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		882A2DF92C47CF06E5BB3E6D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJNetwork-OCUITests/Pods-LJNetwork-OCUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A1CFBBBC1F00EDF7CD4850E4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,36 +408,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJNetwork-OC/Pods-LJNetwork-OC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A51D94A036EB02D2A0725BBA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C35755148533E6DFC18A333C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -504,10 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FFDF7771E76A66200AADDDA /* LJNetworkProxy.m in Sources */,
 				4FFDF73B1E76A5F300AADDDA /* ViewController.m in Sources */,
 				4FFDF77A1E76A67800AADDDA /* LJTestAPI.m in Sources */,
-				4FFDF7761E76A66200AADDDA /* LJBaseAPI.m in Sources */,
+				59CF9D211EA338A8002B506D /* LJBaseAPI.m in Sources */,
+				59CF9D281EA339B2002B506D /* LJNetworkProxy.m in Sources */,
 				4FFDF7381E76A5F300AADDDA /* AppDelegate.m in Sources */,
 				4FFDF7351E76A5F300AADDDA /* main.m in Sources */,
 			);
@@ -658,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DBH6C2N85V;
+				GCC_PREFIX_HEADER = "/Users/ljcoder/workSpace/LJNetwork-objective-c/LJNetwork-OC/LJNetwork-OC/LJNetwork.pch";
 				INFOPLIST_FILE = "LJNetwork-OC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -672,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DBH6C2N85V;
+				GCC_PREFIX_HEADER = "/Users/ljcoder/workSpace/LJNetwork-objective-c/LJNetwork-OC/LJNetwork-OC/LJNetwork.pch";
 				INFOPLIST_FILE = "LJNetwork-OC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -682,7 +595,6 @@
 		};
 		4FFDF7611E76A5F300AADDDA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99DB61E81C751E20D1F3508C /* Pods-LJNetwork-OCTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = DBH6C2N85V;
@@ -696,7 +608,6 @@
 		};
 		4FFDF7621E76A5F300AADDDA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A461340DAE09C6D777AE0BA2 /* Pods-LJNetwork-OCTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = DBH6C2N85V;
@@ -710,7 +621,6 @@
 		};
 		4FFDF7641E76A5F300AADDDA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEFA60248067DB0F16DDAD1E /* Pods-LJNetwork-OCUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = DBH6C2N85V;
 				INFOPLIST_FILE = "LJNetwork-OCUITests/Info.plist";
@@ -723,7 +633,6 @@
 		};
 		4FFDF7651E76A5F300AADDDA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9572C0EB385DEBC697C57AB6 /* Pods-LJNetwork-OCUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = DBH6C2N85V;
 				INFOPLIST_FILE = "LJNetwork-OCUITests/Info.plist";
@@ -753,6 +662,7 @@
 				4FFDF75F1E76A5F300AADDDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FFDF7601E76A5F300AADDDA /* Build configuration list for PBXNativeTarget "LJNetwork-OCTests" */ = {
 			isa = XCConfigurationList;
@@ -761,6 +671,7 @@
 				4FFDF7621E76A5F300AADDDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4FFDF7631E76A5F300AADDDA /* Build configuration list for PBXNativeTarget "LJNetwork-OCUITests" */ = {
 			isa = XCConfigurationList;
@@ -769,6 +680,7 @@
 				4FFDF7651E76A5F300AADDDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

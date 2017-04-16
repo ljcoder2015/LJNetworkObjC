@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <ReactiveObjC/ReactiveObjC.h>
 
 @class LJBaseAPI;
 
@@ -46,9 +46,9 @@
 /********************** 请求回调 ************************/
 @protocol LJRequestCallBackDelegate <NSObject>
 
+@optional
 - (void)manager:(LJBaseAPI *)manager requestCallBackSuccess:(id)responseObject;
 
-@optional
 - (void)manager:(LJBaseAPI *)manager requestCallBackFailed:(NSError *)error;
 
 @end
@@ -61,6 +61,8 @@
 
 - (NSInteger)loadData;
 
-- (NSInteger)uploadImage:(NSData *)imageData;
+- (NSInteger)uploadImage:(NSData *)imageData name:(NSString *)name;
+
+- (RACSignal *)rac_loadData;
 
 @end
