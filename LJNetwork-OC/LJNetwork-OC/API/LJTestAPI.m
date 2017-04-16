@@ -16,7 +16,7 @@
 }
 
 - (NSString *)route {
-    return @"/";
+    return @"geocode/regeo";
 }
 
 @end

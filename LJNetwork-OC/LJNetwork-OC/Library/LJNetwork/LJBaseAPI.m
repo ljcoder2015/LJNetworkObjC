@@ -15,6 +15,16 @@
 @end
 
 @implementation LJBaseAPI
+    
+#pragma mark - setter & getter
+- (NSMutableArray *)requestList {
+    if (!_requestList) {
+        _requestList = [[NSMutableArray alloc] init];
+    }
+    return _requestList;
+}
+
+#pragma mark - init
 - (instancetype)init
 {
     self = [super init];
@@ -78,6 +88,28 @@
     }
     return requestID;
 }
+    
+#pragma mark - uploadImage
+- (NSInteger)uploadImage:(NSData *)imageData name:(NSString *)name {
+    
+    NSDictionary *params = [self.parametersDataSource requestParametersWithManager:self];
+    NSString *path = [self.requestDelegate route];
+    NSNumber *requestID = 0;
+    requestID = [[LJNetworkProxy sharedInstance] uploadImage:imageData path:path params:params name:name success:^(id responseObject, NSError *error) {
+        
+        if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackSuccess:)]) {
+            [self.callBackDelegate manager:self requestCallBackSuccess:responseObject];
+        }
+    } failed:^(id responseObject, NSError *error) {
+        
+        if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackFailed:)]) {
+            [self.callBackDelegate manager:self requestCallBackFailed:error];
+        }
+    }];
+    [self.requestList addObject:requestID];
+    
+    return [requestID integerValue];
+}
 
 #pragma mark - rac_loadData
 - (RACSignal *)rac_loadData {
@@ -139,38 +171,35 @@
     return signal;
 }
 
-#pragma mark - uploadImage
-- (NSInteger)uploadImage:(NSData *)imageData name:(NSString *)name {
-    
+- (RACSignal *)rac_uploadImage:(NSData *)imageData name:(NSString *)name {
     NSDictionary *params = [self.parametersDataSource requestParametersWithManager:self];
     NSString *path = [self.requestDelegate route];
-    NSNumber *requestID = 0;
-    requestID = [[LJNetworkProxy sharedInstance] uploadImage:imageData path:path params:params name:name success:^(id responseObject, NSError *error) {
-        [self.callBackDelegate manager:self requestCallBackSuccess:responseObject];
-    } failed:^(id responseObject, NSError *error) {
-        if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackFailed:)]) {
-            [self.callBackDelegate manager:self requestCallBackFailed:error];
-        }
+    __block NSNumber *requestID = 0;
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        requestID = [[LJNetworkProxy sharedInstance] uploadImage:imageData path:path params:params name:name success:^(id responseObject, NSError *error) {
+            // 成功回调代理
+            if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackSuccess:)]) {
+                [self.callBackDelegate manager:self requestCallBackSuccess:responseObject];
+            }
+            // 发送信号
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        } failed:^(id responseObject, NSError *error) {
+            // 失败代理回调
+            if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackFailed:)]) {
+                [self.callBackDelegate manager:self requestCallBackFailed:error];
+            }
+            // 失败信号
+            [subscriber sendError:error];
+        }];
+        [self.requestList addObject:requestID];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [self cancelAllRequest];
+        }];
     }];
-    //uploadImage:imageData path:path params:params name:name success:^(id responseObject, NSError *error) {
-    //    [self.callBackDelegate manager:self requestCallBackSuccess:responseObject];
-    //} failed:^(id responseObject, NSError *error) {
-    //    if ([self.callBackDelegate respondsToSelector:@selector(manager:requestCallBackFailed:)]) {
-    //        [self.callBackDelegate manager:self requestCallBackFailed:error];
-    //    }
-    //}
-    [self.requestList addObject:requestID];
     
-    return [requestID integerValue];
-}
-
-
-#pragma mark - setter & getter
-- (NSMutableArray *)requestList {
-    if (!_requestList) {
-        _requestList = [[NSMutableArray alloc] init];
-    }
-    return _requestList;
+    return signal;
 }
 
 #pragma mark - cancel request

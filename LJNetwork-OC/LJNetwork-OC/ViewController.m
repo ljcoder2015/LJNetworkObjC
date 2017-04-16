@@ -7,28 +7,18 @@
 //
 
 #import "ViewController.h"
-#import "LJTestAPI.h"
+#import "LJTestViewModel.h"
 
-@interface ViewController () <LJRequestParametersDataSource, LJRequestCallBackDelegate>
-
-@property (strong, nonatomic) LJTestAPI *testAPI;
+@interface ViewController ()
 
 @property (strong, nonatomic) UIButton *requestButton;
 @property (strong, nonatomic) UITextView *responsTextView;
 
+@property (strong, nonatomic) LJTestViewModel *viewModel;
+
 @end
 
 @implementation ViewController
-
-#pragma mark- setter & getter
-- (LJTestAPI *)testAPI {
-    if (!_testAPI) {
-        _testAPI = [[LJTestAPI alloc] init];
-        _testAPI.parametersDataSource = self;
-        _testAPI.callBackDelegate = self;
-    }
-    return _testAPI;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,30 +44,27 @@
     });
     [self.view addSubview:self.responsTextView];
     
+    // viewModel
+    [self bindViewModel];
+    
+}
+
+- (void)bindViewModel {
+    self.viewModel = [[LJTestViewModel alloc] init];
+    
+    [self.viewModel.dataCommand.executionSignals subscribeNext:^(RACSignal *signal) {
+       [signal subscribeCompleted:^{
+           NSLog(@"请求完成");
+       }];
+    }];
+    
+    RAC(self.responsTextView, text) = RACObserve(self.viewModel, text);
+
 }
 
 - (void)reqeust:(UIButton *)button {
     self.responsTextView.text = @"";
-    [self.testAPI loadData];
-}
-
-#pragma mark - LJRequestParametersDataSource
-- (NSDictionary *)requestParametersWithManager:(LJBaseAPI *)manager {
-    
-    if (manager == self.testAPI) {
-        return @{};
-    }
-    return @{};
-}
-
-#pragma mark - LJRequestCallBackDelegate
-- (void)manager:(LJBaseAPI *)manager requestCallBackSuccess:(id)responseObject {
-    
-    if (manager == self.testAPI) {
-        
-        NSLog(@"responseObject = %@", responseObject);
-        self.responsTextView.text = [NSString stringWithFormat:@"%@", responseObject];
-    }
+    [self.viewModel.dataCommand execute:nil];
 }
 
 @end
