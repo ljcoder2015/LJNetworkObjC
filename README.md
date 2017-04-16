@@ -5,12 +5,12 @@ LJNetwork 是一个网络请求的封装库，是对AFNetworking和ReactiveObjC�
 
 ## 使用方法
 1. 所有请求都需要新建一个类，继承自`LJBaseAPI`
-```
+```objectivec
 @interface LJTestAPI : LJBaseAPI
 ```
 2. 请求类需要实现`LJRequestDelegate`,告诉请求的方式和路由
 
-```
+```objectivec
 #pragma mark - LJRequestDelegate
 - (NSString *)requestMethod {
 return @"GET";
@@ -22,7 +22,7 @@ return @"geocode/regeo";
 ```
 
 3. 请求数据时，需要创建一个实例
-```
+```objectivec
 #pragma mark- setter & getter
 - (LJTestAPI *)testAPI {
 if (!_testAPI) {
@@ -34,7 +34,7 @@ return _testAPI;
 }
 ```
 4. 实现参数代理
-```
+```objectivec
 #pragma mark - LJRequestParametersDataSource
 - (NSDictionary *)requestParametersWithManager:(LJBaseAPI *)manager {
 
@@ -47,18 +47,18 @@ return @{};
 ```
 5. 普通请求和使用信号来请求
 - 普通请求
-```
+```objectivec
 [self.testAPI loadData];
 ```
 - 使用信号，使用信号时是创建的冷信号，你还需要订阅信号，让其变成一个热信号才会执行请求。
-```
+```objectivec
 [[self.testAPI rac_loadData] subscribeNext:^(id  _Nullable x) {
 NSLog(@"%@", x);
 }];
 ```
 
 6. 成功回调
-```
+```objectivec
 #pragma mark - LJRequestCallBackDelegate
 - (void)manager:(LJBaseAPI *)manager requestCallBackSuccess:(id)responseObject {
 
@@ -82,7 +82,6 @@ if (manager == self.testAPI) {
 
 ## 联系我
 email：ljcoder@163.com
-
 
 
 
