@@ -53,7 +53,7 @@ LJNetwork 是一个网络请求的封装库，是对AFNetworking和ReactiveObjC�
     ```objectivec
     [self.testAPI loadData];
     ```
-- 使用信号，使用信号时是创建的冷信号，你还需要订阅信号，让其变成一个热信号才会执行请求。
+- 使用信号，使用这个方法后会产生一个信号，你还需要订阅信号才会执行请求。
     ```objectivec
     [[self.testAPI rac_loadData] subscribeNext:^(id  _Nullable x) {
 
